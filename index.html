@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .mySlides { display: none; }
+    #coracao {
+      width: 100px;
+      height: 100px;
+      transition: width 0.5s, height 0.5s;
+    }
+  </style>
+  <script src="Ex01.js"></script>
+  <script src="Ex02.js"></script>
+  <script src="Ex03.js"></script>
+  <script src="Ex04.js"></script>
+  <script src="Ex05.js"></script>
+  <script src="Ex06.js"></script>
+  <script src="Ex07.js"></script>
+  <script src="Ex08.js"></script>
+
+</head>
+<body onload="horas()">
+<div id="txt"></div>
+  <div id="fundo">
+    <h1>JS01 - Data(Férias, Aniversário)</h1>
+    <form>
+      <input type="submit" value="Quantos dias faltam para as férias?" onclick="ferias(); return false;"> <br><br>
+      <input type="submit" value="Quantos dias faltam para o meu aniversário?" onclick="aniversario(); return false;">
+    </form>
+    <br><br><br><br>
+
+    <h1>JS02 - Calculadora de IMC</h1>
+    <form>     
+      <div id="titulo">
+        <p>Peso (apenas números)</p>
+        <input id="peso" type="text"/>
+        <p><br>Altura (formato x.xx)</p>
+        <input id="altura" type="text"/>
+        <br><br>
+      </div>
+      <input value="Calcular IMC" type="submit" onclick="calculaIMC(peso, altura); return false;">
+      <br><br><br><br>
+    </form>
+
+    <h1>JS03 - Calculadora de Média</h1>
+    <form>
+      <p>1ª Nota</p>
+      <input id="nota1" type="text"/>
+      <p>2ª Nota</p>
+      <input id="nota2" type="text"/>
+      <br><br>
+      <input value="Calcular Média" type="submit" onclick="media_notas(nota1, nota2); return false;">
+      <br><br><br><br>
+    </form>
+
+    <h1>JS04 - Nomes Em Ordem</h1>
+    <form>
+      <div id="titulo">
+        <p>Digite a <strong>quantidade</strong> de nomes que deseja ordenar</p><br>
+        <input id="n" type="text"/>
+        <input type="submit" onclick="nome_asc(n); return false;">
+        <p>Em seguida, digite os <strong>nomes</strong> a serem ordenados</p>
+      </div>
+      <br><br><br><br>
+    </form>
+
+    <h1>JS05 - Data de Hoje</h1>
+    <form>
+      <input type="button" value="Data" onclick="data_corr(); return false;">
+      <div id="titulo">
+        <p>Ao clicar no botão <strong>"Data"</strong>, é exibido a data do dia de hoje</p>
+      </div>
+    </form>
+    <br><br><br><br>
+
+    <h1>J06 - Joguinho! </h1>
+    <div id="06">
+      <label for="n1">Número 1: </label>
+      <input type="number" id="n1" min="1" max="10">
+
+      <label for="n2">Número 2: </label>
+      <input type="number" id="n2" min="1" max="10">
+
+      <label for="n3">Número 3: </label>
+      <input type="number" id="n3" min="1" max="10">
+
+      <button onclick="jogar()">Jogar!</button>
+      <button onclick="limparCampos()">Limpar os campos</button>
+      <p id="mensagem"></p>
+      </div>
+    <br><br><br><br>
+
+    <h1>JS07 - Sites (Navegação)</h1>
+      <form id="menuForm" target="_blank">
+        <label for="sites">Selecione o site: </label>
+        <select id="sites" onchange="redirecionar()">
+          <option value="https://open.spotify.com/intl-pt/track/4KfSdst7rW39C0sfhArdrz?si=07d58dadbf3546fb">Barracuda</option>
+          <option value="https://open.spotify.com/intl-pt/track/1vGaDyAHug4rFDhTJX73pT?si=b8db6e3d98fa4031">Slow Ride</option>
+          <option value="https://open.spotify.com/intl-pt/track/0vOkmmJEtjuFZDzrQSFzEE?si=e3aec0ea652c4d02">Hit me with your best shot</option>
+        </select>
+      </form>
+    <br><br><br><br>
+
+    <h1>JS09 - Coração</h1>
+    <img id="coracao" src="coracao.png" alt="Coração">
+    <script>
+      const coracao = document.getElementById('coracao');
+
+      function aumentar() {
+        coracao.style.width = '120px'; // largura aumentada
+        coracao.style.height = '120px'; // altura aumentada
+      }
+
+      function diminuir() {
+        coracao.style.width = '100px'; // largura inicial
+        coracao.style.height = '100px'; // altura inicial
+      }
+
+      function animacao() {
+        setInterval(() => {
+          aumentar();
+          setTimeout(() => {
+            diminuir();
+          }, 600);
+        }, 900);
+      }
+
+      animacao();
+    </script>
+    <br><br><br><br>
+
+    <h1>JS10 - Slideshow</h1>
+    <div class="w3-content w3-section" style="max-width:500px">
+      <img class="mySlides" src="museu.jpg" style="width:100%">
+      <img class="mySlides" src="palacio.jpg" style="width:100%">
+      <img class="mySlides" src="plaza.jpg" style="width: 100%">
+    </div>
+    <script>
+      var myIndex = 0;
+      carousel();
+      
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1; }    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 2000); // Muda a imagem a cada 2 segundos
+      }
+    </script>
+  </div>
+</body>
+</html>
